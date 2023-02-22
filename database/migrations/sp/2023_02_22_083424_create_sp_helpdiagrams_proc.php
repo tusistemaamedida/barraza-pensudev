@@ -12,16 +12,16 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::connection('envasado')->unprepared("
+        DB::unprepared("
 	CREATE PROCEDURE dbo.sp_helpdiagrams
 	(
-		@diagramname sysname = NULL,
+		@diagramname root = NULL,
 		@owner_id int = NULL
 	)
 	WITH EXECUTE AS N'dbo'
 	AS
 	BEGIN
-		DECLARE @user sysname
+		DECLARE @user root
 		DECLARE @dboLogin bit
 		EXECUTE AS CALLER;
 			SET @user = USER_NAME();
@@ -52,6 +52,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::connection('envasado')->unprepared("DROP PROCEDURE IF EXISTS sp_helpdiagrams");
+        DB::unprepared("DROP PROCEDURE IF EXISTS sp_helpdiagrams");
     }
 };

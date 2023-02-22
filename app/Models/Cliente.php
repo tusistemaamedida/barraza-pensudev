@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     use HasFactory;
-    protected $connection = 'pedidos';
+    //protected $connection = 'pedidos';
     protected $table = 'Clientes';
 
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PedidoItem extends Model
 {
     use HasFactory;
-    protected $connection = 'pedidos';
+    //protected $connection = 'pedidos';
     protected $table = 'PedItems';
 
     protected $casts = [

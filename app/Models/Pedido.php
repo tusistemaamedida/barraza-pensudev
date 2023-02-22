@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
-    protected $connection = 'pedidos';
+   // //protected $connection = 'pedidos';
     public $timestamps = false;
     protected $table = 'Pedidos';
     protected $primaryKey = 'NroCom';

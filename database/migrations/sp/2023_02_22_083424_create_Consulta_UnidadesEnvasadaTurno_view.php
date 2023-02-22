@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::connection('envasado')->statement("CREATE VIEW dbo.Consulta_UnidadesEnvasadaTurno
+        DB::statement("CREATE VIEW dbo.Consulta_UnidadesEnvasadaTurno
 AS
 SELECT     TOP (100) PERCENT dbo.Tabla_Envasado.FechaPesaje, dbo.Tabla_Envasado.ID_Usuario, COUNT(dbo.Tabla_Envasado.ID_Usuario) AS cuenta, dbo.Tabla_Usuario.Descripcion
 FROM         dbo.Tabla_Envasado LEFT OUTER JOIN
@@ -29,6 +29,6 @@ ORDER BY dbo.Tabla_Envasado.FechaPesaje
      */
     public function down()
     {
-        DB::connection('envasado')->statement("DROP VIEW IF EXISTS [Consulta_UnidadesEnvasadaTurno]");
+        DB::statement("DROP VIEW IF EXISTS [Consulta_UnidadesEnvasadaTurno]");
     }
 };

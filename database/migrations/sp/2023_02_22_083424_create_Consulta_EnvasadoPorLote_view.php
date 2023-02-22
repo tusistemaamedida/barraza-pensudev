@@ -12,9 +12,9 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::connection('envasado')->statement("CREATE VIEW dbo.Consulta_EnvasadoPorLote
+        DB::statement("CREATE VIEW dbo.Consulta_EnvasadoPorLote
 AS
-SELECT     TOP (100) PERCENT dbo.Tabla_Usuario.Descripcion AS Usuario, dbo.Tabla_Articulo.Descripcion AS Articulo, dbo.Tabla_Envasado.FechaElaboracion, dbo.Tabla_Envasado.Lote, 
+SELECT     TOP (100) PERCENT dbo.Tabla_Usuario.Descripcion AS Usuario, dbo.Tabla_Articulo.Descripcion AS Articulo, dbo.Tabla_Envasado.FechaElaboracion, dbo.Tabla_Envasado.Lote,
                       SUM(dbo.Tabla_Envasado.Peso_Real) AS Kg, COUNT(dbo.Tabla_Envasado.Peso_Real) AS Unidades, AVG(dbo.Tabla_Envasado.Peso_Real) AS Promedio, dbo.Tabla_Articulo.Codigo
 FROM         dbo.Tabla_Articulo INNER JOIN
                       dbo.Tabla_Envasado ON dbo.Tabla_Articulo.Id = dbo.Tabla_Envasado.ID_Articulo INNER JOIN
@@ -31,6 +31,6 @@ ORDER BY dbo.Tabla_Envasado.FechaElaboracion, Usuario
      */
     public function down()
     {
-        DB::connection('envasado')->statement("DROP VIEW IF EXISTS [Consulta_EnvasadoPorLote]");
+        DB::statement("DROP VIEW IF EXISTS [Consulta_EnvasadoPorLote]");
     }
 };

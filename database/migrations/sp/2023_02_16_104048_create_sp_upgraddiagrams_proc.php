@@ -12,20 +12,20 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::connection('envasado')->unprepared("
+        DB::unprepared("
 	CREATE PROCEDURE dbo.sp_upgraddiagrams
 	AS
 	BEGIN
 		IF OBJECT_ID(N'dbo.sysdiagrams') IS NOT NULL
 			return 0;
-	
+
 		CREATE TABLE dbo.sysdiagrams
 		(
-			name sysname NOT NULL,
+			name root NOT NULL,
 			principal_id int NOT NULL,	-- we may change it to varbinary(85)
 			diagram_id int PRIMARY KEY IDENTITY,
 			version int,
-	
+
 			definition varbinary(max)
 			CONSTRAINT UK_principal_name UNIQUE
 			(
@@ -42,7 +42,7 @@ return new class extends Migration
 			CREATE TABLE dbo.sysdiagram_properties
 			(
 				diagram_id int,
-				name sysname,
+				name root,
 				value varbinary(max) NOT NULL
 			)
 		END
@@ -57,16 +57,16 @@ return new class extends Migration
 				[version],
 				[definition]
 			)
-			select	 
-				convert(sysname, dgnm.[uvalue]),
+			select
+				convert(root, dgnm.[uvalue]),
 				DATABASE_PRINCIPAL_ID(N'dbo'),			-- will change to the sid of sa
 				0,							-- zero for old format, dgdef.[version],
 				dgdef.[lvalue]
 			from dbo.[dtproperties] dgnm
-				inner join dbo.[dtproperties] dggd on dggd.[property] = 'DtgSchemaGUID' and dggd.[objectid] = dgnm.[objectid]	
+				inner join dbo.[dtproperties] dggd on dggd.[property] = 'DtgSchemaGUID' and dggd.[objectid] = dgnm.[objectid]
 				inner join dbo.[dtproperties] dgdef on dgdef.[property] = 'DtgSchemaDATA' and dgdef.[objectid] = dgnm.[objectid]
-				
-			where dgnm.[property] = 'DtgSchemaNAME' and dggd.[uvalue] like N'_EA3E6268-D998-11CE-9454-00AA00A3F36E_' 
+
+			where dgnm.[property] = 'DtgSchemaNAME' and dggd.[uvalue] like N'_EA3E6268-D998-11CE-9454-00AA00A3F36E_'
 			return 2;
 		end
 		return 1;
@@ -81,6 +81,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::connection('envasado')->unprepared("DROP PROCEDURE IF EXISTS sp_upgraddiagrams");
+        DB::unprepared("DROP PROCEDURE IF EXISTS sp_upgraddiagrams");
     }
 };

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('envasado')->table('Tabla_Envasado', function (Blueprint $table) {
+        Schema::table('Tabla_Envasado', function (Blueprint $table) {
             $table->foreign(['ID_Establecimiento'], 'Tabla_Envasado_FK01')->references(['Id'])->on('Tabla_Establecimiento')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('envasado')->table('Tabla_Envasado', function (Blueprint $table) {
+        Schema::table('Tabla_Envasado', function (Blueprint $table) {
             $table->dropForeign('Tabla_Envasado_FK01');
         });
     }

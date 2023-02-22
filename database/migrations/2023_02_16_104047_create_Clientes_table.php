@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('pedidos')->create('Clientes', function (Blueprint $table) {
+        Schema::create('Clientes', function (Blueprint $table) {
             $table->string('IdClie', 5);
             $table->string('RazSoc', 40);
             $table->string('NomFan', 30)->nullable();
@@ -80,6 +80,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('pedidos')->dropIfExists('Clientes');
+        Schema::dropIfExists('Clientes');
     }
 };

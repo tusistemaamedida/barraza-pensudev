@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('pedidos')->table('ClientesDomici', function (Blueprint $table) {
+        Schema::table('ClientesDomici', function (Blueprint $table) {
             $table->foreign(['idClie'], 'FK_ClientesDomici_Clientes')->references(['IdClie'])->on('Clientes')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('pedidos')->table('ClientesDomici', function (Blueprint $table) {
+        Schema::table('ClientesDomici', function (Blueprint $table) {
             $table->dropForeign('FK_ClientesDomici_Clientes');
         });
     }

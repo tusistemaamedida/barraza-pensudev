@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sucursal extends Model
 {
     use HasFactory;
-    protected $connection = 'pedidos';
+    //protected $connection = 'pedidos';
     protected $table = 'ClientesDomici';
 }

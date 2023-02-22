@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('pedidos')->create('PedItems', function (Blueprint $table) {
+        Schema::create('PedItems', function (Blueprint $table) {
             $table->string('IdTipo', 4);
             $table->decimal('NroCom', 12, 0);
             $table->string('IdArti', 12);
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('pedidos')->dropIfExists('PedItems');
+        Schema::dropIfExists('PedItems');
     }
 };

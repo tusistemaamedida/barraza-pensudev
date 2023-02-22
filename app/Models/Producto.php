@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
-    protected $connection = 'envasado';
+    //protected $connection = 'envasado';
     protected $table = 'Tabla_Articulo';
 
 }

@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::connection('envasado')->unprepared("
+        DB::unprepared("
 	CREATE PROCEDURE dbo.sp_creatediagram
 	(
-		@diagramname 	sysname,
-		@owner_id		int	= null, 	
+		@diagramname 	root,
+		@owner_id		int	= null,
 		@version 		int,
 		@definition 	varbinary(max)
 	)
@@ -24,22 +24,22 @@ return new class extends Migration
 	AS
 	BEGIN
 		set nocount on
-	
+
 		declare @theId int
 		declare @retval int
 		declare @IsDbo	int
-		declare @userName sysname
+		declare @userName root
 		if(@version is null or @diagramname is null)
 		begin
 			RAISERROR (N'E_INVALIDARG', 16, 1);
 			return -1
 		end
-	
+
 		execute as caller;
-		select @theId = DATABASE_PRINCIPAL_ID(); 
+		select @theId = DATABASE_PRINCIPAL_ID();
 		select @IsDbo = IS_MEMBER(N'db_owner');
-		revert; 
-		
+		revert;
+
 		if @owner_id is null
 		begin
 			select @owner_id = @theId;
@@ -62,11 +62,11 @@ return new class extends Migration
 			RAISERROR ('The name is already used.', 16, 1);
 			return -2
 		end
-	
+
 		insert into dbo.sysdiagrams(name, principal_id , version, definition)
 				VALUES(@diagramname, @theId, @version, @definition) ;
-		
-		select @retval = @@IDENTITY 
+
+		select @retval = @@IDENTITY
 		return @retval
 	END
 	");
@@ -79,6 +79,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::connection('envasado')->unprepared("DROP PROCEDURE IF EXISTS sp_creatediagram");
+        DB::unprepared("DROP PROCEDURE IF EXISTS sp_creatediagram");
     }
 };

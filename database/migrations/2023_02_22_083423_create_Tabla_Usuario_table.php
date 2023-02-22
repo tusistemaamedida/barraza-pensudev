@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('envasado')->create('Tabla_Usuario', function (Blueprint $table) {
+        Schema::create('Tabla_Usuario', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('Descripcion', 80)->nullable();
             $table->char('Clave', 10)->nullable();
-
-            $table->primary(['Id'], 'aaaaaTabla_Usuario_PK');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('envasado')->dropIfExists('Tabla_Usuario');
+        Schema::dropIfExists('Tabla_Usuario');
     }
 };

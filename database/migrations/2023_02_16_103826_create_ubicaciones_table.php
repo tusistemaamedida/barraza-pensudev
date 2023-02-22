@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('ubicaciones', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('estado_id')->nullable()->default(1);
-            $table->integer('deposito_id');
-            $table->integer('calle_id');
-            $table->integer('altura_id');
-            $table->integer('profundidad_id');
+            $table->integer('deposito_id')->nullable()->unsigned();
+            $table->integer('calle_id')->nullable()->unsigned();
+            $table->integer('altura_id')->nullable()->unsigned();
+            $table->integer('profundidad_id')->nullable()->unsigned();
             $table->string('pallet', 150)->nullable();
             $table->decimal('peso_total', 10)->nullable()->default(0);
             $table->decimal('peso_real_total', 10)->nullable()->default(0);

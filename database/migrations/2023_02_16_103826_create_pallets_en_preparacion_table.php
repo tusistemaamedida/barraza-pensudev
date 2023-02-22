@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pallets_en_preparacion', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('fecha')->nullable();
-            $table->time('hora', 7)->nullable();
+            $table->time('hora')->nullable();
             $table->string('token', 32)->nullable();
             $table->string('estado', 32)->nullable()->default('PENDIENTE CIERRE');
             $table->integer('user_id');

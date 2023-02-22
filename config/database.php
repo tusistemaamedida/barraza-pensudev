@@ -4,46 +4,28 @@ use Illuminate\Support\Str;
 
 return [
 
-    'default' => env('DB_CONNECTION', 'pensu_sdev'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     'connections' => [
-        'pensu_sdev' => [
-            'driver' => 'sqlsrv',
+        'mysql' => [
+            'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', null),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
+            'strict' => false,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
-        'envasado' => [
-            'driver' => 'sqlsrv',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST_ENVASADO', 'localhost'),
-            'port' => env('DB_PORT_ENVASADO', null),
-            'database' => env('DB_DATABASE_ENVASADO', 'forge'),
-            'username' => env('DB_USERNAME_ENVASADO', 'forge'),
-            'password' => env('DB_PASSWORD_ENVASADO', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
-            'prefix_indexes' => true,
-        ],
-        'pedidos' => [
-            'driver' => 'sqlsrv',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST_PEDIDOS', 'localhost'),
-            'port' => env('DB_PORT_PEDIDOS', null),
-            'database' => env('DB_DATABASE_PEDIDOS', 'forge'),
-            'username' => env('DB_USERNAME_PEDIDOS', 'forge'),
-            'password' => env('DB_PASSWORD_PEDIDOS', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
-            'prefix_indexes' => true,
-        ],
-
     ],
 
     'migrations' => 'migrations',

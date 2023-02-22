@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('envasado')->create('Tabla_Insumo', function (Blueprint $table) {
+        Schema::create('Tabla_Insumo', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('Descripcion', 80)->nullable();
-
-            $table->primary(['Id'], 'aaaaaTabla_Insumo_PK');
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('envasado')->dropIfExists('Tabla_Insumo');
+        Schema::dropIfExists('Tabla_Insumo');
     }
 };

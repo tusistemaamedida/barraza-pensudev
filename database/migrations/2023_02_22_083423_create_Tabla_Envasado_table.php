@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('envasado')->create('Tabla_Envasado', function (Blueprint $table) {
-            $table->bigIncrements('Id');
+        Schema::create('Tabla_Envasado', function (Blueprint $table) {
+            $table->increments('Id');
             $table->integer('ID_Articulo')->nullable();
             $table->integer('ID_Usuario')->nullable();
-            $table->integer('ID_Establecimiento')->nullable();
+            $table->integer('ID_Establecimiento')->nullable()->unsigned();
             $table->dateTime('FechaPesaje')->nullable();
             $table->dateTime('HoraPesaje')->nullable();
             $table->string('Lote', 50)->nullable();
@@ -32,8 +32,6 @@ return new class extends Migration
             $table->string('CodBarraCaja_Int')->nullable();
             $table->string('CodBarraPallet_Int')->nullable();
             $table->timestamp('upsize_ts');
-
-            $table->primary(['Id'], 'aaaaaTabla_Envasado_PK');
         });
     }
 
@@ -44,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('envasado')->dropIfExists('Tabla_Envasado');
+        Schema::dropIfExists('Tabla_Envasado');
     }
 };

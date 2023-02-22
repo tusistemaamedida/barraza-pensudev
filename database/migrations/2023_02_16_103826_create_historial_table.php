@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('CodBarraPallet_Int', 100)->nullable();
             $table->text('descripcion')->nullable();
             $table->date('fecha')->nullable();
-            $table->time('hora', 7)->nullable();
+            $table->time('hora')->nullable();
             $table->integer('user_id');
         });
     }

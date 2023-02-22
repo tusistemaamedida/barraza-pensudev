@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('envasado')->create('Tabla_Establecimiento', function (Blueprint $table) {
+        Schema::create('Tabla_Establecimiento', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('RazonSocial', 40)->nullable();
             $table->string('Direccion', 50)->nullable();
@@ -22,8 +22,6 @@ return new class extends Migration
             $table->string('RNE', 30)->nullable();
             $table->string('SENASA', 30)->nullable();
             $table->string('CUIT', 20)->nullable();
-
-            $table->primary(['Id'], 'aaaaaTabla_Establecimiento_PK');
         });
     }
 
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('envasado')->dropIfExists('Tabla_Establecimiento');
+        Schema::dropIfExists('Tabla_Establecimiento');
     }
 };

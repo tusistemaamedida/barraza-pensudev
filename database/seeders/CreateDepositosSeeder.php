@@ -34,9 +34,9 @@ class CreateDepositosSeeder extends Seeder
 
     public function run(){
         User::create([
-            'nombre'            => 'Mario',
-            'email'             => 'mario@barraza.test',
-            'password'          => Hash::make('12345678'),
+            'nombre'            => 'Ivan D. Fontana',
+            'email'             => 'ivan@pensudev.com',
+            'password'          => Hash::make('pensudev2023'),
             'remember_token'    => Str::random(40),
             'rol'               => 'ADMIN',
             'activo'            => 1,

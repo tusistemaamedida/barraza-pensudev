@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('envasado')->create('Tabla_Envasado1', function (Blueprint $table) {
+        Schema::create('Tabla_Envasado1', function (Blueprint $table) {
             $table->bigInteger('Id');
             $table->integer('ID_Articulo')->nullable();
             $table->integer('ID_Usuario')->nullable();
@@ -42,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('envasado')->dropIfExists('Tabla_Envasado1');
+        Schema::dropIfExists('Tabla_Envasado1');
     }
 };
