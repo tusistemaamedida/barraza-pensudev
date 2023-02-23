@@ -10,7 +10,7 @@ class Pedido extends Model
     use HasFactory;
    // //protected $connection = 'pedidos';
     public $timestamps = false;
-    protected $table = 'Pedidos';
+    protected $table = 'pedidos';
     protected $primaryKey = 'NroCom';
     protected $fillable = [
         'Estado'

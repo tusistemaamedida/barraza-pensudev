@@ -9,7 +9,7 @@ class PedidoItem extends Model
 {
     use HasFactory;
     //protected $connection = 'pedidos';
-    protected $table = 'PedItems';
+    protected $table = 'peditems';
 
     protected $casts = [
 		'IdArti' => 'int'

@@ -9,7 +9,7 @@ class Pallets extends Model
 {
     use HasFactory;
     //protected $connection = 'envasado';
-    protected $table = 'Tabla_Envasado';
+    protected $table = 'tabla_envasado';
 
     public function producto(){
         return $this->belongsTo(Producto::class, 'ID_Articulo', 'Id');

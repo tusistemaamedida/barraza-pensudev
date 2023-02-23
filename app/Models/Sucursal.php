@@ -9,5 +9,5 @@ class Sucursal extends Model
 {
     use HasFactory;
     //protected $connection = 'pedidos';
-    protected $table = 'ClientesDomici';
+    protected $table = 'clientesdomici';
 }

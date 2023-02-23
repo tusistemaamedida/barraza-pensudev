@@ -9,6 +9,6 @@ class Producto extends Model
 {
     use HasFactory;
     //protected $connection = 'envasado';
-    protected $table = 'Tabla_Articulo';
+    protected $table = 'tabla_articulo';
 
 }

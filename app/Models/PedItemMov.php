@@ -9,7 +9,7 @@ class PedItemMov extends Model
 {
     use HasFactory;
     //protected $connection = 'pedidos';
-    protected $table = 'PedItemsMovs';
+    protected $table = 'peditemsmovs';
     protected $casts = [
 		'IdArti' => 'int'
 	];
